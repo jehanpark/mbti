@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 import { Button } from "react-bootstrap";
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { ResultData } from '../assets/resultdata';
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { ResultData } from "../assets/resultData";
 
 const Wrapper = styled.div`
   display: flex;
@@ -70,7 +70,9 @@ const Result = () => {
         <Logo>
           <img src={resultData.image} alt={resultData.name} />
         </Logo>
-        <Desc>예비집사님과 찰떡궁합인 고양이는 {resultData.best}형 {resultData.name}</Desc>
+        <Desc>
+          예비집사님과 찰떡궁합인 고양이는 {resultData.best}형 {resultData.name}
+        </Desc>
         <Button onClick={handleClickButton}>테스트 다시 시작하기</Button>
       </Contents>
     </Wrapper>
