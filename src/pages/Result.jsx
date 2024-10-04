@@ -1,10 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Button } from "react-bootstrap";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ResultData } from '../assets/resultdata';
-import { useSearchParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,6 +18,7 @@ const Wrapper = styled.div`
 const Header = styled.div`
   font-size: 40px;
 `;
+
 const Desc = styled.div`
   margin: 10px;
   font-size: 20px;
@@ -49,29 +48,33 @@ const Logo = styled.div`
 `;
 
 const Result = () => {
-  const [resultData, setResultData ]= useState({})
-  const [searchParams] = useSearchParams()
-  const mbti = searchParams.get("mbti")
-  const handleCilckButton = ()=>{
-    navigate("/")
-  }
-  useEffect(()=>{
-    const result = ResultData.find((s)=> s.best === mbti)
-    setResultData(result)
-  },[mbti])
+  const [resultData, setResultData] = useState({});
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const mbti = searchParams.get("mbti");
+
+  const handleClickButton = () => {
+    navigate("/");
+  };
+
+  useEffect(() => {
+    const result = ResultData.find((s) => s.best === mbti);
+    setResultData(result);
+  }, [mbti]);
+
   return (
     <Wrapper>
       <Header>예비집사판별기</Header>
       <Contents>
         <Title>나에게 맞는 주인은?</Title>
         <Logo>
-          <img src={resultData.image} />
+          <img src={resultData.image} alt={resultData.name} />
         </Logo>
-        <Desc>예비집사님과 찰떡궁합인 고양이는{resultData.best}형 {resultData.name}</Desc>
-        <Button onClick={handleCilckButton}>테스트 다시 시작하기</Button>
+        <Desc>예비집사님과 찰떡궁합인 고양이는 {resultData.best}형 {resultData.name}</Desc>
+        <Button onClick={handleClickButton}>테스트 다시 시작하기</Button>
       </Contents>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default Result
+export default Result;
