@@ -23,6 +23,11 @@ const Title = styled.div`
   padding: 8px 16px;
   background-color: crimson;
   border-radius: 8px;
+  @media screen and(max-width: 780px){
+    width: 400px;
+    font-size: 24px;
+    padding: 6px 12px;
+  }
 `;
 
 const ButonGroup = styled.div`
@@ -34,6 +39,21 @@ const ButonGroup = styled.div`
     width: 400px;
     height: 200px;
     font-size: 16px;
+  }
+  @media screen and (max-width:  780px){
+    flex-direction: column;
+    & > button {
+    width: 300px;
+    height: 150px;
+    font-size: 16px;
+  }
+  }
+  @media screen and (max-width:  360 ){
+    & > button {
+    width: 200px;
+    height: 100px;
+    font-size: 16px;
+  }
   }
 `;
 

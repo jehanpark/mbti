@@ -21,6 +21,9 @@ const Header = styled.div`
 const Desc = styled.div`
   margin: 10px;
   font-size: 20px;
+  padding: 8px 14px;
+  background: #f00;
+  border-radius: 8px;
 `;
 
 const Contents = styled.div`
